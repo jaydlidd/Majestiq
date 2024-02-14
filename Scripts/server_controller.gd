@@ -48,7 +48,7 @@ func player_connected_failed():
 # Called to load the game scene into the tree and hide the server UI
 @rpc("any_peer", "call_local")
 func start_game():
-	var scene = load(main_scene_path).instantiate()			# Create the main game scene
+	var scene = load(main_scene_path).instantiate()					# Create the main game scene
 	get_tree().root.add_child(scene)								# Add the scene to the root tree
 	self.hide()														# Hide the server UI
 

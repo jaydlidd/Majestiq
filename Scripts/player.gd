@@ -25,5 +25,13 @@ func _physics_process(delta):
 			velocity += Vector3.DOWN * SPEED * delta
 		if Input.is_action_pressed("move_up"):
 			velocity += Vector3.UP * SPEED * delta
+		
+		# Handle camera zoom using mouse wheel
+		if Input.is_action_just_pressed("mouse_scroll_down"):
+			if get_position().y < MAX_HEIGHT:
+				velocity += Vector3.UP * ZOOM_SPEED
+		elif Input.is_action_just_pressed("mouse_scroll_up"):
+			if get_position().y > MIN_HEIGHT:
+				velocity += Vector3.DOWN * ZOOM_SPEED
 				
 		move_and_slide()																		# Update movement

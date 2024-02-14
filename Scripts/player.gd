@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var SPEED = 100.0
+@export var SPEED = 1000.0
 @export var ZOOM_SPEED = 100.0
 @export var MAX_HEIGHT = 30.0
 @export var MIN_HEIGHT = 5.0
@@ -22,16 +22,16 @@ func _physics_process(delta):
 		if Input.is_action_pressed("move_left"):
 			velocity += Vector3.RIGHT * SPEED * delta
 		if Input.is_action_pressed("move_down"):
-			velocity += Vector3.DOWN * SPEED * delta
+			velocity += Vector3.FORWARD * SPEED * delta
 		if Input.is_action_pressed("move_up"):
-			velocity += Vector3.UP * SPEED * delta
+			velocity += Vector3.BACK * SPEED * delta
 		
 		# Handle camera zoom using mouse wheel
 		if Input.is_action_just_pressed("mouse_scroll_down"):
 			if get_position().y < MAX_HEIGHT:
-				velocity += Vector3.UP * ZOOM_SPEED
+				velocity += Vector3(0, 0.866025, -0.5) * ZOOM_SPEED								# See GDD Page 8 for calculations
 		elif Input.is_action_just_pressed("mouse_scroll_up"):
 			if get_position().y > MIN_HEIGHT:
-				velocity += Vector3.DOWN * ZOOM_SPEED
+				velocity += Vector3(0, -0.866025, 0.5) * ZOOM_SPEED								# See GDD Page 8 for calculations
 				
 		move_and_slide()																		# Update movement

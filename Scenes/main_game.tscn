@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" path="res://Scripts/scene_manager.gd" id="1_8cuei"]
 [ext_resource type="PackedScene" uid="uid://f876k6rdrb04" path="res://Scenes/player.tscn" id="1_g64bx"]
-[ext_resource type="PackedScene" uid="uid://bjxg6alr8fdmt" path="res://Scenes/cube.tscn" id="3_sv24j"]
+[ext_resource type="ArrayMesh" uid="uid://cbr4mbfmhc7os" path="res://Models/model_base/model_base.obj" id="3_oumi5"]
 
 [node name="MainGame" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -3)
 script = ExtResource("1_8cuei")
 player_scene = ExtResource("1_g64bx")
 
-[node name="Cube" parent="." instance=ExtResource("3_sv24j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0633392, 0, 11.9315)
+[node name="ModelBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 26)
+mesh = ExtResource("3_oumi5")

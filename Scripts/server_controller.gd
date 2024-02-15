@@ -5,6 +5,8 @@ var port:int = 8910
 var peer:ENetMultiplayerPeer
 var main_scene_path:String = "res://Scenes/main_game.tscn"
 
+var map_tile_list:Array = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.peer_connected.connect(player_connected)				# Call player_connected every time a peer connects
@@ -26,6 +28,9 @@ func _on_join_button_down():
 	
 
 func _on_start_game_button_down():
+	if multiplayer.is_server():
+		generate_map_tiles(int($HoriTiles.text), int($VertTiles.text))
+		send_map_info(map_tile_list, int($HoriTiles.text), int($VertTiles.text))
 	start_game.rpc()												# Start the game on all clients
 
 # Called on clients and servers when player connects
@@ -73,3 +78,24 @@ func host_game():
 	multiplayer.set_multiplayer_peer(peer)							# Set the current connect to the peer (use our own connection to play)
 	send_player_info(multiplayer.get_unique_id())					# Send server player's information
 	print("Waiting for players...")
+
+# Send the map information to the server
+@rpc("any_peer")
+func send_map_info(map_tiles, hori_no, vert_no):
+	# Set the GameManager settings for the player
+	GameManager.map_tiles = map_tiles
+	GameManager.horizontal_tiles = hori_no
+	GameManager.vertical_tiles = vert_no
+	if multiplayer.is_server():										# If the current peer is the server
+		send_map_info.rpc(map_tiles, hori_no, vert_no)				# Broadcast the settings to all other peers
+
+# Design a map of tiles of a preset size with the available tiles
+func generate_map_tiles(x:int, y:int):
+	var possible_tiles:Array = ["sand", "grass"]					# Strings of map tiles in the game
+	var rand_tile:Node												# Variable to hold selected tile
+
+	for i in range(x*y):
+		map_tile_list.append(possible_tiles[randi()% possible_tiles.size()])		# Add the tile to the map list
+		
+#		for j in range(y - 1):
+#			map_tile_list.append(possible_tiles[randi()% possible_tiles.size()])	# Add the tile to the map list

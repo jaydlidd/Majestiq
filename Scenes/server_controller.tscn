@@ -71,6 +71,66 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Start Game"
 
+[node name="HoriTiles" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 48.0
+offset_right = -40.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Horizontal Tiles:"
+
+[node name="VertTiles" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 84.0
+offset_right = 144.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = 84.0
+offset_right = -37.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Vertical Tiles:"
+
 [connection signal="button_down" from="Host" to="." method="_on_host_button_down"]
 [connection signal="button_down" from="Join" to="." method="_on_join_button_down"]
 [connection signal="button_down" from="StartGame" to="." method="_on_start_game_button_down"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://1e4nko6lcvph"]
+[gd_scene load_steps=5 format=3 uid="uid://1e4nko6lcvph"]
 
 [ext_resource type="Script" path="res://Scripts/server_controller.gd" id="1_kps1r"]
 [ext_resource type="Texture2D" uid="uid://6iycqx2crmbi" path="res://icon.svg" id="2_a3wmt"]
+[ext_resource type="PackedScene" uid="uid://cw2g1ob4fqme4" path="res://UI/Buttons/farmer_button.tscn" id="3_c8twx"]
+[ext_resource type="PackedScene" uid="uid://bfqhh3lb5mhb7" path="res://UI/Buttons/knight_button.tscn" id="4_1r8j8"]
 
 [node name="ServerController" type="Control"]
 layout_mode = 3
@@ -33,9 +35,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
+offset_left = -168.0
 offset_top = -12.0
-offset_right = -60.0
+offset_right = -72.0
 offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -50,7 +52,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -48.0
 offset_top = -12.0
-offset_right = 52.0
+offset_right = 48.0
 offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -63,9 +65,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
+offset_left = 72.0
 offset_top = -12.0
-offset_right = 164.0
+offset_right = 168.0
 offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -78,10 +80,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 48.0
-offset_right = 144.0
-offset_bottom = 72.0
+offset_left = 8.0
+offset_top = 44.0
+offset_right = 56.0
+offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "4"
@@ -93,13 +95,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = 48.0
-offset_right = -40.0
-offset_bottom = 73.0
+offset_left = -128.0
+offset_top = 52.0
+offset_right = -3.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Horizontal Tiles:"
+horizontal_alignment = 2
 
 [node name="VertTiles" type="TextEdit" parent="."]
 layout_mode = 1
@@ -108,10 +111,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 84.0
-offset_right = 144.0
-offset_bottom = 108.0
+offset_left = 8.0
+offset_top = 92.0
+offset_right = 56.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "4"
@@ -123,13 +126,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.0
-offset_top = 84.0
-offset_right = -37.0
-offset_bottom = 110.0
+offset_left = -128.0
+offset_top = 96.0
+offset_right = -3.0
+offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Vertical Tiles:"
+horizontal_alignment = 2
+
+[node name="FarmerPiece" parent="." instance=ExtResource("3_c8twx")]
+layout_mode = 1
+offset_top = -164.0
+offset_right = -24.0
+offset_bottom = -68.0
+
+[node name="KnightPiece" parent="." instance=ExtResource("4_1r8j8")]
+layout_mode = 1
+offset_left = 24.0
+offset_top = -164.0
+offset_right = 120.0
+offset_bottom = -68.0
 
 [connection signal="button_down" from="Host" to="." method="_on_host_button_down"]
 [connection signal="button_down" from="Join" to="." method="_on_join_button_down"]

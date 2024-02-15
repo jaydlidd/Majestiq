@@ -3,8 +3,8 @@ extends Node3D
 @export var player_scene:PackedScene
 
 # Preloaded map tiles
-var sand_tile:PackedScene = preload("res://Scenes/sand_tile.tscn")
-var grass_tile:PackedScene = preload("res://Scenes/grass_tile.tscn")
+var sand_tile:PackedScene = preload("res://Scenes/Map Tiles/sand_tile.tscn")
+var grass_tile:PackedScene = preload("res://Scenes/Map Tiles/grass_tile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +13,7 @@ func _ready():
 		current_player.name = str(GameManager.players[player].id)	# Set the name of the player object to be the same as their MP game ID
 		add_child(current_player)									# Add the player object to the scene
 	
+		print(str(GameManager.players[player].id) + str(GameManager.players[player].inventory))
 	# Generate the map tiles into the world
 	generate_map_tiles(GameManager.map_tiles, GameManager.horizontal_tiles, GameManager.vertical_tiles)
 

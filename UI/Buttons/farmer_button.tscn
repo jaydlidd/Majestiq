@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/piece_button.gd" id="2_ag0uc"]
 
 [node name="FarmerPiece" type="Button"]
+custom_minimum_size = Vector2(96, 96)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -11,14 +12,18 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
 offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
+offset_right = -32.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 3
 icon = ExtResource("1_dqy1n")
 expand_icon = true
 script = ExtResource("2_ag0uc")
+button_icon = ExtResource("1_dqy1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_dqy1n")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

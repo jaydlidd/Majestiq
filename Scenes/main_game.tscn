@@ -10,3 +10,19 @@ player_scene = ExtResource("1_g64bx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+
+[node name="Inventory" type="ScrollContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -123.0
+offset_right = 186.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory"]
+layout_mode = 2

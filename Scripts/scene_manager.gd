@@ -6,6 +6,12 @@ extends Node3D
 var sand_tile:PackedScene = preload("res://Scenes/Map Tiles/sand_tile.tscn")
 var grass_tile:PackedScene = preload("res://Scenes/Map Tiles/grass_tile.tscn")
 
+# Preloaded pieces 
+var knight_piece:PackedScene = preload("res://UI/Buttons/knight_button.tscn")
+var farmer_piece:PackedScene = preload("res://UI/Buttons/farmer_button.tscn")
+var piece_button:Node
+var count:int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for player in GameManager.players:								# For each player in the game
@@ -16,6 +22,23 @@ func _ready():
 		print(str(GameManager.players[player].id) + str(GameManager.players[player].inventory))
 	# Generate the map tiles into the world
 	generate_map_tiles(GameManager.map_tiles, GameManager.horizontal_tiles, GameManager.vertical_tiles)
+	populate_inventory()
+	
+func populate_inventory():
+	for player in GameManager.players:										# For each player in the game
+		if GameManager.players[player].id == multiplayer.get_unique_id():	# If the current player id matches the player dict
+			var pieces = GameManager.players[player].inventory
+			for current_piece in pieces:									# Create the buttons for each piece
+				match current_piece:
+					"knight":
+						piece_button = knight_piece.instantiate()	# Spawn the button
+						piece_button.name = current_piece		# Name the piece by the provided name in the inventory
+					"farmer":
+						piece_button = farmer_piece.instantiate()	# Spawn the button
+						piece_button.name = current_piece		# Name the piece by the provided name in the inventory
+				count += 1
+				piece_button.position = Vector2(8+(count*(100+8)),0)
+				get_node("Inventory/HBoxContainer").add_child(piece_button)
 
 # Design a map of tiles of a preset size with the available tiles
 func generate_map_tiles(map:Array, x:int, y:int):

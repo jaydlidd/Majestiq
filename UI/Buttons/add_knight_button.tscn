@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfqhh3lb5mhb7"]
 
 [ext_resource type="Texture2D" uid="uid://c1nh6l4ltgkv1" path="res://Piece Icons/knight.png" id="1_klu62"]
-[ext_resource type="Script" path="res://Scripts/piece_button.gd" id="2_hyw4b"]
+[ext_resource type="Script" path="res://Scripts/add_piece_button.gd" id="2_hyw4b"]
 
 [node name="KnightPiece" type="Button"]
 anchors_preset = 8

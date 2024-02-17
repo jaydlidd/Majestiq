@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/server_controller.gd" id="1_kps1r"]
 [ext_resource type="Texture2D" uid="uid://6iycqx2crmbi" path="res://icon.svg" id="2_a3wmt"]
-[ext_resource type="PackedScene" uid="uid://cw2g1ob4fqme4" path="res://UI/Buttons/farmer_button.tscn" id="3_c8twx"]
-[ext_resource type="PackedScene" uid="uid://bfqhh3lb5mhb7" path="res://UI/Buttons/knight_button.tscn" id="4_1r8j8"]
+[ext_resource type="PackedScene" uid="uid://cw2g1ob4fqme4" path="res://UI/Buttons/add_farmer_button.tscn" id="3_c8twx"]
+[ext_resource type="PackedScene" uid="uid://bfqhh3lb5mhb7" path="res://UI/Buttons/add_knight_button.tscn" id="4_1r8j8"]
 
 [node name="ServerController" type="Control"]
 layout_mode = 3

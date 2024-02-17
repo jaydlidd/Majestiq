@@ -7,8 +7,8 @@ var sand_tile:PackedScene = preload("res://Scenes/Map Tiles/sand_tile.tscn")
 var grass_tile:PackedScene = preload("res://Scenes/Map Tiles/grass_tile.tscn")
 
 # Preloaded pieces 
-var knight_piece:PackedScene = preload("res://UI/Buttons/knight_button.tscn")
-var farmer_piece:PackedScene = preload("res://UI/Buttons/farmer_button.tscn")
+var knight_piece:PackedScene = preload("res://UI/Buttons/add_knight_button.tscn")
+var farmer_piece:PackedScene = preload("res://UI/Buttons/farmer_piece.tscn")
 var piece_button:Node
 var count:int = 0
 
@@ -36,13 +36,12 @@ func populate_inventory():
 					"farmer":
 						piece_button = farmer_piece.instantiate()	# Spawn the button
 						piece_button.name = current_piece		# Name the piece by the provided name in the inventory
-				count += 1
-				piece_button.position = Vector2(8+(count*(100+8)),0)
+#				count += 1
+#				piece_button.position = Vector2(8+(count*(100+8)),0)
 				get_node("Inventory/HBoxContainer").add_child(piece_button)
 
 # Design a map of tiles of a preset size with the available tiles
 func generate_map_tiles(map:Array, x:int, y:int):
-	var possible_tiles:Array = [sand_tile, grass_tile]		# A list of possible tiles to spawn
 	var offset:float										# Variable to store the offset to align vertical hexagons
 	var tile_count:int = 0									# A count of tiles used for naming and as an index for the map array
 	var row_height:float = 3.6								# Float to know how high to place the next row so that tiles click
@@ -75,7 +74,9 @@ func match_tile(tile:String, tile_count:int):
 	match tile:
 		"sand":
 			new_tile = sand_tile.instantiate()
+			new_tile.name = str(tile_count) + "_" + new_tile.name
 		"grass":
 			new_tile = grass_tile.instantiate()
-			
+			new_tile.name = str(tile_count) + "_" + new_tile.name
+		
 	return new_tile

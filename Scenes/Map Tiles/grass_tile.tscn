@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl2aqm3ku055v"]
+[gd_scene load_steps=4 format=3 uid="uid://cl2aqm3ku055v"]
 
 [ext_resource type="ArrayMesh" uid="uid://b1jfmlclwuhhq" path="res://Models/grass_tile/grass_tile.obj" id="1_fmpdv"]
 [ext_resource type="ArrayMesh" uid="uid://1tj6lhv3nxn8" path="res://Models/hex_model_base/hex_model_base.obj" id="2_8r8j2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wyoyt"]
+points = PackedVector3Array(0, 1, 2.4, -2.4, 1, 1.2, -2.4, 1, -1.2, 0, 1, -2.4, 2.4, 1, -1.2, 2.4, 1, 1.2)
 
 [node name="GrassTile" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -12,3 +15,8 @@ mesh = ExtResource("1_fmpdv")
 
 [node name="HexModelBase" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_8r8j2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_wyoyt")

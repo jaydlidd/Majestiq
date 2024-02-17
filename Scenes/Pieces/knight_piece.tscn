@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://nvxjli587b4g"]
+
+[ext_resource type="ArrayMesh" uid="uid://dda4g1w8ikr3" path="res://Models/knight/knight.obj" id="1_74k5x"]
+[ext_resource type="ArrayMesh" uid="uid://cbr4mbfmhc7os" path="res://Models/model_base/model_base.obj" id="2_2ruj1"]
+
+[node name="KnightPiece" type="Node3D"]
+
+[node name="Knight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.9, 0.1)
+mesh = ExtResource("1_74k5x")
+
+[node name="ModelBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+mesh = ExtResource("2_2ruj1")

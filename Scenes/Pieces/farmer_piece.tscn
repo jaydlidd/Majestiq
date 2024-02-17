@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh3p2b8yk0nt4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbr4mbfmhc7os" path="res://Models/model_base/model_base.obj" id="1_knhfy"]
+[ext_resource type="ArrayMesh" uid="uid://shkexafeq2ip" path="res://Models/farmer/farmer.obj" id="2_lg1wh"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_78rrq"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:scale")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+
+[node name="FarmerPiece" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="ModelBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+mesh = ExtResource("1_knhfy")
+
+[node name="Farmer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = ExtResource("2_lg1wh")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_78rrq")
